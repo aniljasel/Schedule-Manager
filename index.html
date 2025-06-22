@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedule Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="main-container">
+    <div class="layout-wrapper">
+      
+      <!-- Sidebar -->
+      <aside class="sidebar-container">
+        <div class="sidebar-header">
+          <h1 class="sidebar-title">Schedule Manager</h1>
+          <button id="newEventBtn" class="btn-new-event">
+            <i class="fas fa-plus"></i>
+            <span>New Event</span>
+          </button>
+        </div>
+
+        <div class="filters-section">
+          <h2 class="filters-title">Quick Filters</h2>
+          <div class="filters-list">
+            <button data-filter="all" class="filter-btn" id="all-events">All Events</button>
+            <button data-filter="work" class="filter-btn" id="work-events">Work</button>
+            <button data-filter="personal" class="filter-btn" id="personal-events">Personal</button>
+            <button data-filter="meeting" class="filter-btn" id="meeting-events">Meetings</button>
+          </div>
+        </div>
+
+        <div class="upcoming-section">
+          <h2 class="upcoming-title">Upcoming Events</h2>
+          <div id="upcomingEvents" class="upcoming-list">
+            <!-- Upcoming events will be populated here -->
+          </div>
+        </div>
+
+        <div class="category-section">
+          <h2 class="category-title">Event Categories</h2>
+          <div class="category-list">
+            <div class="category-item">
+              <span class="dot work-dot bg-indigo-500"></span>
+              <span class="category-label">Work</span>
+            </div>
+            <div class="category-item">
+              <span class="dot personal-dot bg-green-500"></span>
+              <span class="category-label">Personal</span>
+            </div>
+            <div class="category-item">
+              <span class="dot meeting-dot bg-purple-500"></span>
+              <span class="category-label">Meeting</span>
+            </div>
+            <div class="category-item">
+              <span class="dot urgent-dot bg-red-500"></span>
+              <span class="category-label">Urgent</span>
+            </div>
+            <div class="category-item">
+              <span class="dot reminder-dot bg-yellow-500"></span>
+              <span class="category-label">Reminder</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="calendar-container">
+        
+        <!-- Week Navigation -->
+        <div class="week-navigation">
+          <div class="week-nav-controls">
+            <button id="prevWeek" class="nav-btn">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <h2 id="currentWeek" class="current-week-title">Week of June 5, 2023</h2>
+            <button id="nextWeek" class="nav-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Weekly Calendar -->
+        <div class="weekly-calendar">
+          <div class="calendar-header grid grid-cols-7 border-b">
+            <div class="calendar-day-name">Sun</div>
+            <div class="calendar-day-name">Mon</div>
+            <div class="calendar-day-name">Tue</div>
+            <div class="calendar-day-name">Wed</div>
+            <div class="calendar-day-name">Thu</div>
+            <div class="calendar-day-name">Fri</div>
+            <div class="calendar-day-name">Sat</div>
+          </div>
+          <div id="weeklyCalendar" class="calendar-grid grid grid-cols-7 divide-x">
+            <!-- Calendar days will be populated here -->
+          </div>
+        </div>
+
+        <!-- Day View -->
+        <section id="dayView" class="day-view hidden">
+          <div class="day-view-header">
+            <h2 id="dayViewTitle" class="day-view-title">Monday, June 5</h2>
+          </div>
+          <div id="dayViewEvents" class="day-view-body">
+            <!-- Day view events will be populated here -->
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Event Modal -->
+  <div id="eventModal" class="modal-overlay hidden">
+    <div class="modal-container modal-animation">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Add New Event</h3>
+        <button id="closeModal" class="modal-close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="eventForm">
+        <input type="hidden" id="eventId" />
+
+        <div class="form-group">
+          <label for="eventTitle" class="form-label">Event Title</label>
+          <input type="text" id="eventTitle" class="form-input" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eventDate" class="form-label">Date</label>
+            <input type="date" id="eventDate" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label for="eventTime" class="form-label">Time</label>
+            <input type="time" id="eventTime" class="form-input" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="eventCategory" class="form-label">Category</label>
+          <select id="eventCategory" class="form-input">
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="meeting">Meeting</option>
+            <option value="urgent">Urgent</option>
+            <option value="reminder">Reminder</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="eventDescription" class="form-label">Description</label>
+          <textarea id="eventDescription" rows="3" class="form-input"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelEvent" class="btn-cancel">Cancel</button>
+          <button type="submit" class="btn-submit">Save Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirmModal" class="modal-overlay hidden">
+    <div class="modal-container modal-animation">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirm Deletion</h3>
+        <button id="closeConfirmModal" class="modal-close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <p class="modal-message">Are you sure you want to delete this event? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button type="button" id="cancelDelete" class="btn-cancel">Cancel</button>
+        <button type="button" id="confirmDelete" class="btn-delete">Delete Event</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
