@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const dayViewEvents = document.getElementById('dayViewEvents');
     const upcomingEvents = document.getElementById('upcomingEvents');
     const filterButtons = document.querySelectorAll('.filter-btn');
+    const sidebarCategories = document.querySelector('.category-list');
 
     // State variables
     let currentDate = new Date();
@@ -25,10 +26,20 @@ document.addEventListener('DOMContentLoaded', function () {
     let eventToDelete = null;
     let currentFilter = 'all';
 
+    // Category definitions
+    const categories = [
+        { key: 'work', label: 'Work', dot: 'work-dot' },
+        { key: 'personal', label: 'Personal', dot: 'personal-dot' },
+        { key: 'meeting', label: 'Meeting', dot: 'meeting-dot' },
+        { key: 'urgent', label: 'Urgent', dot: 'urgent-dot' },
+        { key: 'reminder', label: 'Reminder', dot: 'reminder-dot' }
+    ];
+
     // Initialize the app
     init();
 
     function init() {
+        renderSidebarCategories();
         renderWeeklyCalendar();
         renderUpcomingEvents();
         setupEventListeners();
@@ -64,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentFilter = btn.dataset.filter;
                 renderWeeklyCalendar();
                 renderUpcomingEvents();
+                dayView.classList.add('hidden');
             });
         });
 
@@ -73,6 +85,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteEvent(eventToDelete.id);
                 closeConfirmModalFunc();
             }
+        });
+
+        // Hide day view on outside click
+        document.addEventListener('click', function (e) {
+            if (!dayView.contains(e.target) && !e.target.classList.contains('calendar-day')) {
+                dayView.classList.add('hidden');
+            }
+        });
+
+        // Prevent modal close on click inside
+        eventModal.addEventListener('click', e => e.stopPropagation());
+        confirmModal.addEventListener('click', e => e.stopPropagation());
+    }
+
+    function renderSidebarCategories() {
+        if (!sidebarCategories) return;
+        sidebarCategories.innerHTML = '';
+        categories.forEach(cat => {
+            const div = document.createElement('div');
+            div.className = 'category-item';
+            div.innerHTML = `<span class="dot ${cat.dot}"></span><span class="category-label">${cat.label}</span>`;
+            sidebarCategories.appendChild(div);
         });
     }
 
@@ -111,36 +145,42 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         eventModal.classList.remove('hidden');
+        eventModal.style.display = 'flex';
     }
 
     function closeEventModal() {
         eventModal.classList.add('hidden');
+        eventModal.style.display = '';
     }
 
     function closeConfirmModalFunc() {
         confirmModal.classList.add('hidden');
+        confirmModal.style.display = '';
         eventToDelete = null;
     }
 
     function openConfirmModal(event) {
         eventToDelete = event;
         confirmModal.classList.remove('hidden');
+        confirmModal.style.display = 'flex';
     }
 
     function handleEventFormSubmit(e) {
         e.preventDefault();
 
         const eventId = document.getElementById('eventId').value;
-        const eventTitle = document.getElementById('eventTitle').value;
+        const eventTitle = document.getElementById('eventTitle').value.trim();
         const eventDate = document.getElementById('eventDate').value;
         const eventTime = document.getElementById('eventTime').value;
         const eventCategory = document.getElementById('eventCategory').value;
-        const eventDescription = document.getElementById('eventDescription').value;
+        const eventDescription = document.getElementById('eventDescription').value.trim();
+
+        if (!eventTitle || !eventDate || !eventTime) return;
 
         const event = {
             id: eventId || generateId(),
             title: eventTitle,
-            date: new Date(eventDate),
+            date: eventDate,
             time: eventTime,
             category: eventCategory,
             description: eventDescription
@@ -158,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         closeEventModal();
         renderWeeklyCalendar();
         renderUpcomingEvents();
+        dayView.classList.add('hidden');
     }
 
     function generateId() {
@@ -201,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .sort((a, b) => a.time.localeCompare(b.time));
 
             const dayDiv = document.createElement('div');
-            dayDiv.className = 'calendar-day p-3 cursor-pointer hover:bg-gray-50 transition-colors min-h-[120px]';
+            dayDiv.className = 'calendar-day';
             if (day.toDateString() === new Date().toDateString()) {
                 dayDiv.classList.add('active');
             }
@@ -215,14 +256,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // Events
             dayEvents.forEach(ev => {
                 const evDiv = document.createElement('div');
-                evDiv.className = 'event-item flex items-center gap-2 mb-1 px-2 py-1 rounded hover:bg-indigo-50 group';
+                evDiv.className = 'event-item';
                 evDiv.innerHTML = `
-                                <span class="event-dot ${getCategoryDotClass(ev.category)}"></span>
-                                <span class="text-xs font-medium truncate">${ev.title}</span>
-                                <span class="ml-auto text-xs text-gray-400">${ev.time}</span>
-                                <button class="ml-2 text-gray-400 hover:text-indigo-600 edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                <button class="ml-1 text-gray-400 hover:text-red-600 delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
-                            `;
+                    <span class="event-dot ${getCategoryDotClass(ev.category)}"></span>
+                    <span class="text-xs font-medium truncate">${ev.title}</span>
+                    <span class="ml-auto text-xs text-gray-400">${ev.time}</span>
+                    <button class="ml-2 text-gray-400 hover:text-indigo-600 edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="ml-1 text-gray-400 hover:text-red-600 delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                `;
                 // Edit event
                 evDiv.querySelector('.edit-btn').addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -247,11 +288,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function getCategoryDotClass(category) {
         switch (category) {
-            case 'work': return 'bg-indigo-500';
-            case 'personal': return 'bg-green-500';
-            case 'meeting': return 'bg-purple-500';
-            case 'urgent': return 'bg-red-500';
-            case 'reminder': return 'bg-yellow-500';
+            case 'work': return 'work-dot';
+            case 'personal': return 'personal-dot';
+            case 'meeting': return 'meeting-dot';
+            case 'urgent': return 'urgent-dot';
+            case 'reminder': return 'reminder-dot';
             default: return 'bg-gray-400';
         }
     }
@@ -265,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const upcoming = events
             .filter(ev => {
                 const evDate = new Date(ev.date);
-                return evDate >= now && evDate <= nextWeek &&
+                return evDate >= new Date(formatDateForInput(now)) && evDate <= nextWeek &&
                     (currentFilter === 'all' || ev.category === currentFilter);
             })
             .sort((a, b) => {
@@ -284,10 +325,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const evDiv = document.createElement('div');
             evDiv.className = 'flex items-center gap-2 bg-gray-50 rounded px-2 py-1';
             evDiv.innerHTML = `
-                            <span class="event-dot ${getCategoryDotClass(ev.category)}"></span>
-                            <span class="text-xs font-medium truncate">${ev.title}</span>
-                            <span class="ml-auto text-xs text-gray-400">${formatDateForInput(ev.date)} ${ev.time}</span>
-                        `;
+                <span class="event-dot ${getCategoryDotClass(ev.category)}"></span>
+                <span class="text-xs font-medium truncate">${ev.title}</span>
+                <span class="ml-auto text-xs text-gray-400">${formatDateForInput(ev.date)} ${ev.time}</span>
+            `;
             upcomingEvents.appendChild(evDiv);
         });
     }
@@ -313,15 +354,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const evDiv = document.createElement('div');
             evDiv.className = 'flex items-center gap-2 px-4 py-3';
             evDiv.innerHTML = `
-                            <span class="event-dot ${getCategoryDotClass(ev.category)}"></span>
-                            <div class="flex-1">
-                                <div class="font-medium">${ev.title}</div>
-                                <div class="text-xs text-gray-400">${ev.time} &middot; ${ev.category.charAt(0).toUpperCase() + ev.category.slice(1)}</div>
-                                <div class="text-xs text-gray-500 mt-1">${ev.description || ''}</div>
-                            </div>
-                            <button class="ml-2 text-gray-400 hover:text-indigo-600 edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                            <button class="ml-1 text-gray-400 hover:text-red-600 delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
-                        `;
+                <span class="event-dot ${getCategoryDotClass(ev.category)}"></span>
+                <div class="flex-1">
+                    <div class="font-medium">${ev.title}</div>
+                    <div class="text-xs text-gray-400">${ev.time} &middot; ${ev.category.charAt(0).toUpperCase() + ev.category.slice(1)}</div>
+                    <div class="text-xs text-gray-500 mt-1">${ev.description || ''}</div>
+                </div>
+                <button class="ml-2 text-gray-400 hover:text-indigo-600 edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                <button class="ml-1 text-gray-400 hover:text-red-600 delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+            `;
             // Edit event
             evDiv.querySelector('.edit-btn').addEventListener('click', (e) => {
                 e.stopPropagation();

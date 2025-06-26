@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Schedule Manager</title>
-    <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -62,6 +61,7 @@
               <span class="dot reminder-dot bg-yellow-500"></span>
               <span class="category-label">Reminder</span>
             </div>
+              <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
           </div>
         </div>
       </aside>
@@ -73,11 +73,11 @@
         <div class="week-navigation">
           <div class="week-nav-controls">
             <button id="prevWeek" class="nav-btn">
-              <i class="fas fa-chevron-left"></i>
+              <img src="./left-chevron.png" alt="img">
             </button>
             <h2 id="currentWeek" class="current-week-title">Week of June 5, 2023</h2>
             <button id="nextWeek" class="nav-btn">
-              <i class="fas fa-chevron-right"></i>
+              <img src="right-arrow-angle.png" alt="img">
             </button>
           </div>
         </div>
