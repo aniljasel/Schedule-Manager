@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.nav-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-left img {
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.nav-left a,
+.nav-right a {
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 1rem;
+}
+
+.nav-left a h1 {
+  font-size: 24px;
+  color: var(--dark);
+  margin: 0;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}

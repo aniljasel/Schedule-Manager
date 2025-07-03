@@ -1,0 +1,115 @@
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0 20px 0;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 100%;
+    height: 470px;
+    gap: 20px;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1.5px solid var(--glass-border);
+    background: var(--glass);
+}
+
+.hero-header {
+    display: flex;
+    flex-direction: row;
+    background: var(--accent);
+    border-bottom: 1.5px solid var(--glass-border);
+    border-radius: 10px 10px 0 0;
+    padding: 5px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user .icon {
+    color: var(--light);
+}
+
+.hero-header .icon:hover {
+    color: var(--secondary);
+}
+
+.hero-header .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-header .divider i {
+    font-size: 18px;
+    color: var(--dark);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.hero-header .divider i:hover {
+    color: var(--secondary);
+}
+
+.hero-left .left-buttons {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hero-left .left-buttons i {
+    font-size: 18px;
+    color: var(--dark);
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+.hero-left .left-buttons i:hover {
+    color: var(--secondary);
+}
+
+.hero-left a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.hero-left .hero-footer {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.hero-left .hero-footer a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.hero-left .hero-footer i:hover {
+    color: var(--secondary);
+}
+
+.hero-left .hero-footer i {
+    font-size: 18px;
+    color: var(--dark);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    background: var(--glass);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 10px;
+    padding: 20px;
+    align-items: flex-start;
+    gap: 10px;
+}
