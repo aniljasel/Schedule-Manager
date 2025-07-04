@@ -1,16 +1,77 @@
+/* Updated on 09:46 AM IST, Friday, July 04, 2025 */
+
+:root[data-theme="light"] {
+  --glass: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --dark: #333;
+  --light: #fff;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --background-light: #e6e6fa; /* Suggested for hero-right light mode */
+}
+
+:root[data-theme="dark"] {
+  --glass: rgba(50, 50, 50, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --dark: #fff;
+  --light: #333;
+  --text-primary: #fff;
+  --text-secondary: #ccc;
+  --background-light: #2a2a3d; /* Suggested for hero-right dark mode */
+}
+
+/* Note for other developers: Apply these styles to .hero-right to ensure text color changes with theme:
+   .hero-right {
+     color: var(--text-primary);
+     background: var(--background-light);
+   }
+   .hero-right h1 {
+     color: var(--text-primary);
+   }
+   .hero-right p {
+     color: var(--text-secondary);
+   }
+*/
+
 .header {
   display: flex;
+  justify-content: space-between;
   background: var(--glass);
   border: 1.5px solid var(--glass-border);
   border-radius: 10px;
   padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1000;
 }
 
 .nav-left {
-  flex: 1;
   display: flex;
   align-items: center;
   gap: 10px;
+  position: relative; /* Needed for dropdown positioning */
+}
+
+.nav-left .menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 15px;
+  height: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  position: relative; /* Reference for dropdown */
+}
+
+.nav-left .menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background: var(--dark);
+  transition: all 0.3s ease;
 }
 
 .nav-left img {
@@ -30,9 +91,96 @@
   font-size: 24px;
   color: var(--dark);
   margin: 0;
+  white-space: nowrap;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
+  gap: 15px;
+}
+
+.about-link {
+  display: block; /* Visible on desktop */
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.dropdown-menu {
+  display: block; /* Overridden by JS condition */
+  position: absolute;
+  top: 100%; /* Below the menu-toggle button */
+  left: 0; /* Aligned with the menu-toggle button */
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  min-width: 100px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.dropdown-item {
+  display: block;
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 0.9rem;
+  padding: 5px 0;
+}
+
+.theme-toggle {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--dark);
+  transition: background 0.3s ease, color 0.3s ease;
+  line-height: 1; /* Ensure icon aligns well */
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--dark);
+}
+
+/* Responsive design for mobile phones */
+@media (max-width: 768px) {
+  .nav-left .menu-toggle {
+    display: flex; /* Show hamburger menu on mobile */
+  }
+
+  .header {
+    padding: 10px;
+  }
+
+  .nav-left {
+    gap: 5px;
+  }
+
+  .nav-left img {
+    height: 30px;
+    width: 30px;
+  }
+
+  .nav-left a h1 {
+    font-size: 18px;
+  }
+
+  .nav-right .about-link {
+    display: none; /* Hide About on mobile desktop view */
+  }
+
+  .nav-right .about-link-mobile {
+    display: none; /* Not used anymore, replaced by dropdown */
+  }
+
+  .nav-right a,
+  .theme-toggle {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
 }
