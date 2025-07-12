@@ -84,7 +84,7 @@ function AddTeamPopup({ onClose, onAddTeam }) {
             <p className="addteam-terms">
               By creating a team, you agree to our{" "}
               <a
-                href=""
+                href="#"
                 onClick={e => {
                   e.preventDefault();
                   setShowTerms(true);

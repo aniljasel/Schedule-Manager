@@ -80,7 +80,7 @@ function LoginPopup({ onClose, onRegisterClick }) {
             required
           />
           <button type="submit" className="popup-button edit-btn">Login</button>
-          <span>Don't have an account? <a href="" onClick={e => { e.preventDefault(); onRegisterClick(); }}>Register</a></span>
+          <span>Don't have an account? <a href="#" onClick={e => { e.preventDefault(); onRegisterClick(); }}>Register</a></span>
         </form>
 
         <button className="social-button" onClick={handleGoogleSignIn}>

@@ -59,7 +59,7 @@ function Header({ onAboutClick, onPrivacyClick }) {
           <div className="about-modal-overlay">
             <div className="dropdown-menu" ref={dropdownRef}>
               <a
-                  href=""
+                  href="#"
                   id="About-btn"
                   onClick={e => {
                     e.preventDefault();
@@ -70,7 +70,7 @@ function Header({ onAboutClick, onPrivacyClick }) {
                 <i className="fas fa-user-circle"></i>About
               </a>
                 <a
-                  href=""
+                  href="#"
                   id="Privacy-btn"
                   onClick={e => {
                     e.preventDefault();
