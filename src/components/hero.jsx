@@ -310,18 +310,18 @@ function Hero({ onUpdatesClick, onHelpClick }) {
         </svg>
         <div className="hero-left">
           <div className='hero-header'>
-            <a href="#" className='icon' onClick={onUpdatesClick}><i className="fas fa-bell"></i></a>
-            <a href="#" className='icon' onClick={() => setShowProfile(true)}><i className="fa fa-user-tie"></i></a>
+            <a href="" className='icon' onClick={onUpdatesClick}><i className="fas fa-bell"></i></a>
+            <a href="" className='icon' onClick={() => setShowProfile(true)}><i className="fa fa-user-tie"></i></a>
           </div>
 
           <div className='left-buttons'>
-            <a href="#" className="add-task-btn" id='task' onClick={() => setShowAddTask(true)} ><i className='fas fa-add'></i>Add Task</a>
-        {/* <a href='#' className="icon"><i className='fas fa-search'></i>Search</a> */}
-            <a href='#' className="icon" onClick={toggleInbox}><i className='fas fa-inbox'></i>Inbox</a>
-            <a href='#' className="icon" onClick={toggleToday}><i className='fas fa-calendar-day'></i>Today</a>
-            <a href='#' className="icon" id='calander' onClick={toggleCalendar}><i className='fas fa-calendar'></i>Upcoming</a>
-            <a href='#' className="icon" onClick={toggleCompleted}><i className='fas fa-check-circle'></i>Completed</a>
-            <a href='#' className="icon" onClick={() => {
+            <a href="" className="add-task-btn" id='task' onClick={() => setShowAddTask(true)} ><i className='fas fa-add'></i>Add Task</a>
+        {/* <a href='' className="icon"><i className='fas fa-search'></i>Search</a> */}
+            <a href='' className="icon" onClick={toggleInbox}><i className='fas fa-inbox'></i>Inbox</a>
+            <a href='' className="icon" onClick={toggleToday}><i className='fas fa-calendar-day'></i>Today</a>
+            <a href='' className="icon" id='calander' onClick={toggleCalendar}><i className='fas fa-calendar'></i>Upcoming</a>
+            <a href='' className="icon" onClick={toggleCompleted}><i className='fas fa-check-circle'></i>Completed</a>
+            <a href='' className="icon" onClick={() => {
               setShowTeams(true);
               setShowInbox(false);
               setShowToday(false);
@@ -333,7 +333,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
 
           <div className='hero-footer'>
             <a
-              href="#"
+              href=""
               onClick={(e) => {
                 e.preventDefault();
                 if (user) {
@@ -347,7 +347,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
             >
               <i className="fas fa-user-plus"></i>Add Team
             </a>
-            <a href="#" title="Help" onClick={onHelpClick}><i className="fas fa-headset"></i>Help & Support</a>
+            <a href="" title="Help" onClick={onHelpClick}><i className="fas fa-headset"></i>Help & Support</a>
           </div>
         </div>
 

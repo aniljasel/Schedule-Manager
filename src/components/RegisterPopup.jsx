@@ -98,7 +98,7 @@ function RegisterPopup({ onClose, onLoginClick }) {
             required
           />
           <button type="submit" className="popup-button edit-btn">Register</button>
-          <span>Already have an account? <a href="#" onClick={e => {
+          <span>Already have an account? <a href="" onClick={e => {
             e.preventDefault();
             onLoginClick();
           }}>Login</a></span>

@@ -24,7 +24,7 @@ function About({ onClose, onPrivacy }) {
                         <li>JavaScript - For logic and interactivity.</li>
                     </ul>
                     <p>
-                        Read our <a href="#" onClick={e => { e.preventDefault(); onPrivacy(); }}>Privacy Policy</a>.
+                        Read our <a href="" onClick={e => { e.preventDefault(); onPrivacy(); }}>Privacy Policy</a>.
                     </p>
                     <button className="popup-close" onClick={onClose}>✖</button>
                 </div>

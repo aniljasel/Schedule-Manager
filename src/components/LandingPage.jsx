@@ -26,9 +26,9 @@ function LandingPage({ onLogin, onRegister, onAbout, onPrivacy }) {
         </nav>
         <nav className="nav-actions">
           <div className="nav-links">
-            <a href="#" onClick={onAbout}>About</a>
-            <a href="#" onClick={onLogin}>Login</a>
-            <a href="#" onClick={onRegister}>Register</a>
+            <a href="" onClick={onAbout}>About</a>
+            <a href="" onClick={onLogin}>Login</a>
+            <a href="" onClick={onRegister}>Register</a>
           </div>
           {/* Hamburger for mobile */}
           <button
@@ -45,10 +45,10 @@ function LandingPage({ onLogin, onRegister, onAbout, onPrivacy }) {
             <>
               <div className="about-modal-overlay" onClick={() => setIsMenuOpen(false)} />
               <div className="dropdown-menu" ref={menuRef}>
-                <a href="#" onClick={() => { setIsMenuOpen(false); onAbout(); }}><i className="fas fa-user-circle"></i>About</a>
-                <a href="#" onClick={() => { setIsMenuOpen(false); onLogin(); }}><i className="fas fa-sign-in-alt"></i>Login</a>
-                <a href="#" onClick={() => { setIsMenuOpen(false); onRegister(); }}><i className="fas fa-user-plus"></i>Register</a>
-                <a href="#" onClick={e => { e.preventDefault(); setIsMenuOpen(false); onPrivacy(); }}><i className="fas fa-shield-alt"></i>Privacy Policy</a>
+                <a href="" onClick={() => { setIsMenuOpen(false); onAbout(); }}><i className="fas fa-user-circle"></i>About</a>
+                <a href="" onClick={() => { setIsMenuOpen(false); onLogin(); }}><i className="fas fa-sign-in-alt"></i>Login</a>
+                <a href="" onClick={() => { setIsMenuOpen(false); onRegister(); }}><i className="fas fa-user-plus"></i>Register</a>
+                <a href="" onClick={e => { e.preventDefault(); setIsMenuOpen(false); onPrivacy(); }}><i className="fas fa-shield-alt"></i>Privacy Policy</a>
               </div>
             </>
           )}
@@ -91,7 +91,7 @@ function LandingPage({ onLogin, onRegister, onAbout, onPrivacy }) {
       </main>
       <footer className="landing-footer">
         <span>© {new Date().getFullYear()} Schedule Manager. All rights reserved.</span>
-        <a href="#" onClick={e => { e.preventDefault(); onPrivacy(); }}>Privacy Policy</a>
+        <a href="" onClick={e => { e.preventDefault(); onPrivacy(); }}>Privacy Policy</a>
       </footer>
     </div>
   );
