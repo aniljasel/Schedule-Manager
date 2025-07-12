@@ -1,0 +1,29 @@
+.success-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.success-popup-card {
+  background: var(--glass);
+  color: var(--dark);
+  border: 1px solid var(--glass-border);
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  min-width: 250px;
+  box-shadow: 0 5px 20px var(--dark);
+  animation: fadeInUp 0.3s ease-out;
+}

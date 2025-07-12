@@ -1,0 +1,94 @@
+.popup-card {
+  background: var(--glass);
+  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  animation: fadeInUp 0.3s ease-out;
+  border: 1.5px solid var(--glass-border);
+}
+
+.popup-header {
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  padding: 20px;
+  display: flex;
+  border-radius: 10px;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--glass-border);
+}
+
+.popup-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.popup-body h2 {
+  margin: 10px 0 5px;
+  color: var(--dark);
+  font-size: 20px;
+}
+
+.popup-body p {
+  margin: 0 0 10px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.popup-body p {
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+
+.popup-button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn {
+  background: #7b2ff7;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background: #6923d0;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: var(--glass);
+  cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

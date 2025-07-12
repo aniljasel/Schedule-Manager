@@ -1,0 +1,146 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* .popup-card {
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  top: 0;  left: 0;  right: 0;  bottom: 0;
+  width: 320px;
+  height: 80vh;
+  color: var(--dark);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+} */
+
+.popup-card h2 {
+  margin-bottom: 15px;
+  color: var(--dark);
+  text-align: center;
+}
+
+.popup-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-card input {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--light);
+  border: 1px solid #ddd;
+}
+
+.popup-button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: var(--secondary);
+  color: var(--glass-border);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.popup-button:hover {
+  background: var(--primary);
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: var(--dark);
+  cursor: pointer;
+}
+
+.popup-close:hover {
+  background: var(--glass);
+}
+
+.popup-card span a {
+  text-decoration: underline;
+  margin-left: 10px;
+}
+
+@media (max-width: 900px) {
+  .popup-card {
+    margin: 30px;
+    height: 50vh;
+  }
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: var(--glass);
+  color: #555;
+  font-weight: 500;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.1s;
+  margin-top: 20px;
+}
+
+.google-button:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.google-button img {
+  width: 20px;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: var(--glass);
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.1s;
+  margin: 10px auto;
+  width: 90%;
+}
+
+.social-button:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.social-logo {
+  width: 20px;
+  height: 20px;
+}

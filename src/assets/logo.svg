@@ -1,0 +1,29 @@
+<!-- filepath: c:\Users\hi\Downloads\schedule-manager\src\assets\logo.svg -->
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="0" />
+  <!-- Calendar body -->
+  <rect x="64" y="80" width="320" height="272" rx="64" fill="white" stroke="white" stroke-width="16"/>
+  <!-- Calendar rings -->
+  <rect x="104" y="32" width="56" height="112" rx="28" fill="white"/>
+  <rect x="264" y="32" width="56" height="112" rx="28" fill="white"/>
+  <!-- Calendar grid -->
+  <rect x="120" y="168" width="56" height="56" rx="12" fill="blue"/>
+  <rect x="200" y="168" width="56" height="56" rx="12" fill="blue"/>
+  <rect x="280" y="168" width="56" height="56" rx="12" fill="blue"/>
+  <rect x="120" y="248" width="56" height="56" rx="12" fill="blue"/>
+  <rect x="200" y="248" width="56" height="56" rx="12" fill="blue"/>
+  <rect x="280" y="248" width="56" height="56" rx="12" fill="blue"/>
+  <!-- Clock group -->
+  <g>
+    <circle cx="368" cy="368" r="96" fill="white" stroke="black" stroke-width="8"/>
+    <circle cx="368" cy="368" r="72" fill="blue"/>
+    <!-- Clock hands -->
+    <rect x="364" y="320" width="8" height="48" rx="4" fill="white"/>
+    <rect x="368" y="368" width="8" height="32" rx="4" transform="rotate(45 368 368)" fill="white"/>
+    <!-- Clock ticks -->
+    <rect x="366" y="292" width="4" height="16" rx="2" fill="white"/>
+    <rect x="366" y="428" width="4" height="16" rx="2" fill="white"/>
+    <rect x="292" y="366" width="16" height="4" rx="2" fill="white"/>
+    <rect x="428" y="366" width="16" height="4" rx="2" fill="white"/>
+  </g>
+</svg>

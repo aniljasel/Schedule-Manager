@@ -1,0 +1,21 @@
+:root {
+    --primary: #218bf6c9;
+    --secondary: #0080ff;
+    --dark: #0a0a1a;
+    --body: linear-gradient(to bottom, #4800ffe4 0%, #767676 100%);
+    --accent: #fcfcfc53;
+    --glass: #ffffff5b;
+    --glass-border: rgb(255, 255, 255);
+    --task: rgba(189, 0, 0, 0.701);
+    --background: rgba(0,0,0,0.20);
+    --sub-heading: rgb(81, 78, 78);
+    --hover: rgba(255, 255, 255, 0.726);
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to right bottom, #4800FF 0%, #009dff 100%);
+    background-attachment: fixed;
+}

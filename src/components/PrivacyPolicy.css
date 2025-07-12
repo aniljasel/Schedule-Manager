@@ -1,0 +1,70 @@
+.privacy-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background: var(--background);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.privacy-Container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--glass);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 10px;
+    margin: 50px auto;
+    max-width: 700px;
+    padding: 32px 24px;
+    z-index: 1000;
+    overflow: auto;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.privacy-content h2 {
+    margin-bottom: 12px;
+    margin-top: 0;
+    color: var(--dark);
+}
+
+.privacy-content h3 {
+    color: var(--dark);
+}
+
+.privacy-Container p {
+    border-top: 1.5px solid var(--dark);
+    padding-top: 5px;
+    color: var(--dark);
+}
+
+.privacy-content ul {
+    margin-top: 12px;
+    padding-left: 20px;
+    color: var(--dark);
+}
+
+.privacy-Container::-webkit-scrollbar {
+    width: 0;
+}
+
+.privacy-Container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+@media (max-width: 900px) {
+    .privacy-Container {
+        margin: 30px;
+        padding: 20px 24px;
+    }
+
+    .privacy-Container h2 {
+        font-size: 1.2rem;
+    }
+
+    .privacy-Container p,
+    .privacy-Container ul {
+        font-size: 0.9rem;
+    }
+}

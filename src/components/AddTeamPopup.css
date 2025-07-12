@@ -1,0 +1,193 @@
+.addteam-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--background);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addteam-card {
+    background: var(--glass, #fff);
+    border: 1.5px solid var(--glass-border, #eee);
+    border-radius: 12px;
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.addteam-card h2 {
+    margin: 0;
+    color: var(--dark, #222);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.addteam-card p,
+.addteam-card .addteam-terms {
+    color: var(--sub-heading);
+}
+
+.addteam-card input {
+    width: 94.5%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--glass-border);
+    font-size: 1rem;
+    background: var(--glass);
+    color: var(--dark);
+}
+
+.addteam-desc {
+    margin: 0;
+    color: var(--sub-heading);
+    font-size: 1rem;
+}
+
+.addteam-card label {
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: block;
+    color: var(--dark, #222);
+    margin-top: 3px;
+}
+
+.addteam-card select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid var(--glass-border);
+    font-size: 1rem;
+    background: var(--glass);
+    color: var(--dark);
+}
+
+.addteam-card input:focus,
+.addteam-card select:focus {
+    color: var(--dark);
+    outline: 2px solid var(--primary, #218bf6);
+    border-color: var(--primary, #218bf6);
+}
+
+textarea:focus,
+input:focus {
+    color: black;
+}
+
+.addteam-multiselect {
+    min-height: 60px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.addteam-hint {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.addteam-charcount {
+    text-align: right;
+    color: var(--sub-heading);
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.addteam-btn {
+    width: 100%;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    margin: 30px 0;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.addteam-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.addteam-terms {
+    font-size: 13px;
+    color: var(--sub-heading);
+    margin-top: 0;
+}
+
+.addteam-terms a {
+    color: #218bf6;
+    text-decoration: underline;
+}
+
+.addteam-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.2s;
+}
+
+.popup-close {
+    padding: 5px 10px;
+}
+
+.popup-close:hover {
+    background: var(--glass);
+}
+
+.addteam-close:hover {
+    color: #e74c3c;
+}
+
+.addteam-card::-webkit-scrollbar {
+    width: 8px;
+}
+.addteam-card::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 0 35px 35px 0;
+}
+
+.addteam-card::-webkit-scrollbar-track {
+    background: var(--glass);
+    border-radius: 0 35px 35px 0;
+}
+
+@media (max-width: 600px) {
+    .addteam-card {
+        padding: 20px;
+        max-width: 99vw;
+        margin: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .addteam-card input {
+        width: 92%;
+    }
+}

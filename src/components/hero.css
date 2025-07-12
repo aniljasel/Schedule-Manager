@@ -1,0 +1,370 @@
+.hero {
+    display: flex;
+    width: 100%;
+    /* min-height: 100vh; */
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 20px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    /* min-height: 100vh; */
+    position: relative;
+    gap: 20px;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: 1.5px solid var(--glass-border);
+    background: var(--glass);
+    width: 300px;
+    /* min-width: 220px; */
+    max-width: 320px;
+    transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, width 0.4s;
+    transform: translateX(0);
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+    height: auto;
+}
+
+.hero-left.collapsed {
+    transform: translateX(-110%);
+    opacity: 0;
+    width: 0;
+    min-width: 0;
+    pointer-events: none;
+}
+
+
+/* hero header */ 
+.hero-header {
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    border-bottom: 1.5px solid var(--glass-border);
+    border-radius: 10px 10px 0 0;
+    padding: 5px 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-header i {
+    font-size: 18px;
+    color: var(--dark);
+    border-radius: 50%;
+    padding: 10px;
+    margin-left: 30px;
+}
+
+.hero-header i:hover {
+    background: var(--accent);
+    color: var(--secondary);
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+/* hero left buttons */
+.hero-left .left-buttons {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 60%;
+    flex-direction: column;
+}
+
+.hero-left .left-buttons i {
+    font-size: 18px;
+    color: var(--dark);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+
+/* -- Add task btn --*/
+.hero-left .add-task-btn {
+    font-size: 18px;
+    /* color: var(--task); */
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.hero-left .add-task-btn i {
+    padding: 2px 3px;
+    margin-right: 10px;
+    /* background: var(--task); */
+    /* color: var(--glass); */
+}
+
+.task-title {
+    color: var(--dark);
+    font-size: 1rem;
+    margin: 8px 0 0 0;
+    word-break: break-word;         /* Long words wrap ho jayenge */
+    white-space: pre-line;          /* Line breaks preserve ho jayenge */
+    max-height: 60px;               /* Max height set karein */
+    overflow-y: auto;               /* Scrollbar aayega agar content zyada ho */
+    padding-right: 4px;             /* Scrollbar ke liye thoda space */
+}
+
+.task-desc {
+    color: var(--dark);
+    font-size: 1rem;
+    margin: 8px 0 0 0;
+    word-break: break-word;         /* Long words wrap ho jayenge */
+    white-space: pre-line;          /* Line breaks preserve ho jayenge */
+    max-height: 60px;               /* Max height set karein */
+    overflow-y: auto;               /* Scrollbar aayega agar content zyada ho */
+    padding-right: 4px;             /* Scrollbar ke liye thoda space */
+}
+
+.checkbox {
+    width: 17px;
+    height: 17px;
+    margin-top: 15px;
+}
+
+.task-desc::-webkit-scrollbar,
+.task-title::-webkit-scrollbar {
+    width: 6px;
+}
+.task-desc::-webkit-scrollbar-thumb,
+.task-title::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 3px;
+}
+.task-desc::-webkit-scrollbar-track,
+.task-title::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#task i:hover {
+    color: var(--dark);
+}
+
+.hero-left .left-buttons i:hover {
+    color: var(--secondary);
+}
+
+.hero-left a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.left-buttons a:hover,
+.hero-footer a:hover {
+    background: var(--accent);
+    border-radius: 5px;
+}
+
+.hero-left .hero-footer {
+    position: fixed;
+    bottom: 0; right: 0; left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.hero-left .hero-footer a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+.hero-left .hero-footer i:hover {
+    color: var(--secondary);
+}
+
+.hero-left .hero-footer i {
+    font-size: 18px;
+    color: var(--dark);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+/* Hero Right */
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    background: var(--glass);
+    border: 1.5px solid var(--glass-border);
+    border-radius: 10px;
+    flex: 1 1 0%;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1), margin 0.4s;
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+    z-index: 1;
+    /* max-height: 100vh; */
+    height: auto;
+    padding: 20px;
+}
+
+.hero-right.expanded {
+    width: 100%;
+    margin-left: -25px;
+}
+
+.hero-right h1 {
+    font-size: rem;
+    color: var(--dark);
+}
+
+.hero-right p {
+    color: var(--dark);
+}
+
+/* Toggle button always visible */
+#left-toggle {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    z-index: 100;
+    transition: left 0.4s;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#left-toggle:hover {
+    background: var(--accent);
+    border-radius: 5px;
+    color: var(--light);
+}
+
+#left-toggle rect,
+#left-toggle line {
+    stroke: var(--dark);
+}
+
+#left-toggle:hover rect,
+#left-toggle:hover line {
+    stroke: var(--secondary);
+}
+
+
+/* Teams Section */
+.teams-container {
+  margin-top: 18px;
+  padding: 0 8px 24px 8px;
+}
+
+.teams-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.team-card {
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid #e0e7ff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px 0 rgba(33,139,246,0.07);
+  padding: 18px 22px 14px 22px;
+  transition: box-shadow 0.2s;
+  font-size: 1.08rem;
+}
+
+.team-card:hover {
+  box-shadow: 0 4px 24px 0 rgba(33,139,246,0.13);
+  border-color: #218bf6c9;
+}
+
+.team-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.team-icon {
+  font-size: 1.5em;
+  color: #218bf6c9;
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 2px 8px 0 rgba(33,139,246,0.08);
+}
+
+.team-name {
+  font-weight: 700;
+  font-size: 1.18em;
+  color: var(--dark, #222);
+}
+
+.team-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 18px;
+  font-size: 1em;
+}
+
+.team-details b {
+  color: var(--sub-heading);
+  font-weight: 600;
+}
+
+.team-na {
+  color: #aaa;
+  font-style: italic;
+}
+
+.add-team-btn {
+  background: linear-gradient(90deg, #218bf6c9 60%, #5e60ce 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px 0 rgba(33,139,246,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--glass-border);
+  gap: 8px;
+}
+
+.add-team-btn:hover {
+  background: linear-gradient(90deg, #005bb5 60%, #5e60ce 100%);
+  box-shadow: 0 4px 16px 0 rgba(33,139,246,0.13);
+}
+
+@media (max-width: 900px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+    .hero-left {
+        width: auto;
+        max-width: 100%;
+    }
+    
+    .hero-left .left-buttons {
+        margin-bottom: 25%;
+    }
+
+    .hero-right {
+        width: auto;
+        max-width: 100%;
+    }
+
+    .hero-header i {
+        margin-left: 0;
+    }
+
+    #left-toggle {
+        display: none;
+    }
+}

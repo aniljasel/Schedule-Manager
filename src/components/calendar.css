@@ -1,0 +1,19 @@
+.calendar-container {
+  background-color: transparent;
+  color: var(--dark);
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fc-toolbar-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
