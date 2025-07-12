@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import './LandingPage.css';
+import logo from '../assets/logo.png';
 
 function LandingPage({ onLogin, onRegister, onAbout, onPrivacy }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ function LandingPage({ onLogin, onRegister, onAbout, onPrivacy }) {
     <div className="landing-root">
       <header className="landing-header">
         <nav className="nav-info">
-          <img src="src/assets/logo.png" alt="logo" className="landing-logo" />
+          <img src={logo} alt="logo" className="landing-logo" />
           <h1>Schedule Manager</h1>
         </nav>
         <nav className="nav-actions">

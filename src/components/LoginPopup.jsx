@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword, GoogleAuthProvider, OAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth, db } from '../firebase/firebase';
 import { doc, setDoc } from 'firebase/firestore';
+import apple from '../assets/apple.png';
+import google from '../assets/google.png';
 import './AuthPopup.css';
 
 function LoginPopup({ onClose, onRegisterClick }) {
@@ -83,7 +85,7 @@ function LoginPopup({ onClose, onRegisterClick }) {
 
         <button className="social-button" onClick={handleGoogleSignIn}>
           <img
-            src="src//assets//google.png" alt="Google logo"
+            src={google} alt="Google logo"
             className="social-logo"
           />
           Continue with Google
@@ -91,7 +93,7 @@ function LoginPopup({ onClose, onRegisterClick }) {
 
         <button className="social-button" onClick={handleAppleSignIn}>
           <img
-            src="src//assets//apple.png" alt="Apple logo"
+            src={apple} alt="Apple logo"
             className="social-logo"
           />
           Continue with Apple

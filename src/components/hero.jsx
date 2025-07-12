@@ -14,6 +14,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import AddTaskPopup from './AddTaskPopup';
 import EditTaskPopup from './EditTaskPopup';
 import AddTeamPopup from './AddTeamPopup';
+import userImg from '../assets/user.png';
 
 // function to get date in yyyy-mm-dd format
 function getTaskDate(dueDate) {
@@ -518,7 +519,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
           user={user ? {
             name: user.displayName,
             email: user.email,
-            avatar: "src/assets/user.png",
+            avatar: userImg,
           } : null}
           onClose={() => setShowProfile(false)}
           onLoginClick={() => { setShowProfile(false); setShowLogin(true); }}

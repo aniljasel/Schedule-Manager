@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './header.css';
+import logo from '../assets/logo.png';
 
 function Header({ onAboutClick, onPrivacyClick }) {
   const [theme, setTheme] = useState('light');
@@ -40,7 +41,7 @@ function Header({ onAboutClick, onPrivacyClick }) {
   return (
     <header className="header">
       <nav className="nav-left">
-        <img src="src/assets/logo.png" alt="image" />
+        <img src={logo} alt="image" />
         <h1>Schedule Manager</h1>
       </nav>
       <nav className="nav-right">

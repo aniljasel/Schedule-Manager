@@ -3,6 +3,8 @@ import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, OAut
 import { auth, db } from '../firebase/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import './AuthPopup.css';
+import apple from '../assets/apple.png';
+import google from '../assets/google.png';
 
 function RegisterPopup({ onClose, onLoginClick }) {
   const [name, setName] = useState('');
@@ -104,7 +106,7 @@ function RegisterPopup({ onClose, onLoginClick }) {
 
         <button className="social-button" onClick={handleGoogleSignIn}>
           <img
-            src="src//assets//google.png" alt="Google logo"
+            src={google} alt="Google logo"
             className="social-logo"
           />
           Continue with Google
@@ -112,7 +114,7 @@ function RegisterPopup({ onClose, onLoginClick }) {
 
         <button className="social-button" onClick={handleAppleSignIn}>
           <img
-            src="src//assets//apple.png" alt="Apple logo"
+            src={apple} alt="Apple logo"
             className="social-logo"
           />
           Continue with Apple
