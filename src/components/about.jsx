@@ -1,6 +1,6 @@
 import './about.css'
 
-function About({ onClose, onPrivacy }) {
+function About({ onClose }) {
     return (
         <div className="about-modal-overlay" onClick={onClose}>
             <section className="About-Container" id="aboutContainer" onClick={e => e.stopPropagation()}>
@@ -23,9 +23,6 @@ function About({ onClose, onPrivacy }) {
                         <li>HTML5 & CSS3 - For structure and styling.</li>
                         <li>JavaScript - For logic and interactivity.</li>
                     </ul>
-                    <p>
-                        Read our <a href="#" onClick={e => { e.preventDefault(); onPrivacy(); }}>Privacy Policy</a>.
-                    </p>
                     <button className="popup-close" onClick={onClose}>✖</button>
                 </div>
             </section>

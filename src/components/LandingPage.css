@@ -160,7 +160,7 @@
 }
 
 .landing-footer a {
-    color: var(--secondary);
+    color: var(--dark);
     text-decoration: underline;
     margin-left: 18px;
 }

@@ -66,8 +66,7 @@ function Header({ onAboutClick, onPrivacyClick }) {
                     setIsMenuOpen(false);
                     onAboutClick(e);
                   }}
-              >
-                <i className="fas fa-user-circle"></i>About
+              ><i className="fas fa-user-circle"></i>About
               </a>
                 <a
                   href="#"
@@ -77,10 +76,9 @@ function Header({ onAboutClick, onPrivacyClick }) {
                     setIsMenuOpen(false);
                     onPrivacyClick(e);
                   }}
-                >
-                  <i className="fas fa-shield-alt"></i>Privacy Policy
+                ><i className="fas fa-shield-alt"></i>Privacy Policy
                 </a>
-              <button className="theme-toggle" onClick={toggleTheme}>
+                <button className="theme-toggle" onClick={toggleTheme}>
                 <span><i className={theme === 'light' ? 'fas fa-moon' : 'fas fa-sun'}></i>Theme</span>
               </button>
             </div>

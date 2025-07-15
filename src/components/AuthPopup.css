@@ -49,6 +49,12 @@
   border: 1px solid #ddd;
 }
 
+.popup-card span,
+.popup-card span a {
+  color: var(--dark);
+}
+
+
 .popup-button {
   margin-top: 10px;
   padding: 10px;
@@ -127,7 +133,7 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   background-color: var(--glass);
-  color: #333;
+  color: var(--dark);
   font-weight: 500;
   cursor: pointer;
   transition: box-shadow 0.2s, transform 0.1s;
