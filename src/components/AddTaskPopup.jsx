@@ -37,7 +37,7 @@ function AddTaskPopup({ onClose }) {
 
   return (
     <div className="popup-overlay" onClick={onClose}>
-      <div className="popup-card" onClick={(e) => e.stopPropagation()}>
+      <div className="task-card" onClick={(e) => e.stopPropagation()}>
         <h2>Add Task</h2>
         <form onSubmit={handleSubmit}>
           <input

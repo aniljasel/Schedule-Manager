@@ -45,10 +45,10 @@ function LandingPage({ onLogin, onRegister, onAbout, onPrivacy }) {
             <>
               <div className="about-modal-overlay" onClick={() => setIsMenuOpen(false)} />
               <div className="dropdown-menu" ref={menuRef}>
-                <a href="#" onClick={() => { setIsMenuOpen(false); onAbout(); }}><i className="fas fa-user-circle"></i>About</a>
+                <a href="#" onClick={(e) => { setIsMenuOpen(false); e.preventDefault(); onAbout(e); }}><i className="fas fa-user-circle"></i>About</a>
                 <a href="#" onClick={() => { setIsMenuOpen(false); onLogin(); }}><i className="fas fa-sign-in-alt"></i>Login</a>
                 <a href="#" onClick={() => { setIsMenuOpen(false); onRegister(); }}><i className="fas fa-user-plus"></i>Register</a>
-                <a href="#" onClick={e => { e.preventDefault(); setIsMenuOpen(false); onPrivacy(); }}><i className="fas fa-shield-alt"></i>Privacy Policy</a>
+                <a href="#" onClick={() => { setIsMenuOpen(false); onPrivacy(); }}><i className="fas fa-shield-alt"></i>Privacy Policy</a>
               </div>
             </>
           )}

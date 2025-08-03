@@ -62,7 +62,7 @@ function LoginPopup({ onClose, onRegisterClick }) {
 
   return (
     <div className="popup-overlay" onClick={onClose}>
-      <div className="popup-card" onClick={(e) => e.stopPropagation()}>
+      <div className="login-popup-card" onClick={(e) => e.stopPropagation()}>
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
           <input

@@ -1,3 +1,44 @@
+/* Task Popup */
+.task-card {
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  width: 320px;
+  height: auto;
+  color: var(--dark);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.task-card h2 {
+  margin-bottom: 15px;
+  color: var(--dark);
+  text-align: center;
+}
+
+.task-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-card input, textarea {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--light);
+  border: 1px solid #ddd;
+}
+
+@media (max-width: 900px) {
+  .task-card {
+    margin: 30px;
+    height: 50vh;
+  }
+}
+
+/* Task list */
 .task-list {
   display: flex;
   flex-direction: column;

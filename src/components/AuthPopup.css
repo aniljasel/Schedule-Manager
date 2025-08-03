@@ -16,45 +16,6 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* .popup-card {
-  background: var(--glass);
-  border: 1.5px solid var(--glass-border);
-  top: 0;  left: 0;  right: 0;  bottom: 0;
-  width: 320px;
-  height: 80vh;
-  color: var(--dark);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  position: relative;
-} */
-
-.popup-card h2 {
-  margin-bottom: 15px;
-  color: var(--dark);
-  text-align: center;
-}
-
-.popup-card form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.popup-card input {
-  margin: 8px 0;
-  padding: 10px;
-  border-radius: 6px;
-  color: var(--light);
-  border: 1px solid #ddd;
-}
-
-.popup-card span,
-.popup-card span a {
-  color: var(--dark);
-}
-
-
 .popup-button {
   margin-top: 10px;
   padding: 10px;
@@ -89,13 +50,6 @@
 .popup-card span a {
   text-decoration: underline;
   margin-left: 10px;
-}
-
-@media (max-width: 900px) {
-  .popup-card {
-    margin: 30px;
-    height: 50vh;
-  }
 }
 
 .google-button {
@@ -149,4 +103,62 @@
 .social-logo {
   width: 20px;
   height: 20px;
+}
+
+
+@media (max-width: 900px) {
+  .popup-card,
+  .register-popup-card,
+  .login-popup-card {
+    margin: 30px;
+    height: 50vh;
+  }
+}
+
+/* Register Popup */
+.register-popup-card,
+.login-popup-card {
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  width: 320px;
+  height: auto;
+  color: var(--dark);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.register-popup-card h2,
+.login-popup-card h2 {
+  margin-bottom: 15px;
+  color: var(--dark);
+  text-align: center;
+}
+
+.register-popup-card form,
+.login-popup-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.register-popup-card input,
+.login-popup-card input {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--light);
+  border: 1px solid #ddd;
+}
+
+.register-popup-card span,
+.login-popup-card span {
+  color: var(--dark);
+}
+
+.register-popup-card a,
+.login-popup-card a {
+  text-decoration: underline;
+  margin-left: 10px;
 }
