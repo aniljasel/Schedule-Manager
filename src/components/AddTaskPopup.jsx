@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import { auth, db } from "../firebase/firebase"; // ✅ Adjust if your path is different
+import { auth, db } from "../firebase/firebase"; 
 import "./AddTaskPopup.css";
 
 function AddTaskPopup({ onClose }) {

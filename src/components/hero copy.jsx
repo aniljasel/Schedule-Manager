@@ -14,7 +14,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import AddTaskPopup from './AddTaskPopup';
 import EditTaskPopup from './EditTaskPopup';
 import AddTeamPopup from './AddTeamPopup';
-import ManageMeetings from './MeetingRoom';
 import userImg from '../assets/user.png';
 
 // function to get date in yyyy-mm-dd format
@@ -51,10 +50,11 @@ function Hero({ onUpdatesClick, onHelpClick }) {
   const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [loadingTasks, setLoadingTasks] = useState(false);
-  // show meeting room 
-  const [showMeeting, setShowMeeting] = useState(false);
   // show teams...
   const [showTeams, setShowTeams] = useState(false);
+  // show meeting room
+  const [showMeeting, setShowMeeting] = useState(false);
+
 
   // Fetch tasks from Firestore
   const fetchTasks = async (userId) => {
@@ -80,7 +80,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
         ...task,
         createdBy: user.uid,
         completed: false,
-        createdAt: new Date(), 
+        createdAt: new Date(),
         dueDate: task.dueDate || new Date(), // fallback to today
       });
       setSuccessMessage('Task added!');
@@ -130,7 +130,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
       console.error("Error updating task:", error);
     }
   };
-  
+
   const [editIdx, setEditIdx] = useState(null);
   const [editTask, setEditTask] = useState(null);
   const handleEditTask = (idx) => {
@@ -211,13 +211,13 @@ function Hero({ onUpdatesClick, onHelpClick }) {
     setShowCalendar(false);
   };
 
+  //function for meeting room
   const toggleMeeting = () => {
     setShowMeeting(prev => !prev);
-    setShowTeams(false);
     setShowInbox(false);
     setShowToday(false);
     setShowCalendar(false);
-    setShowCompleted(false);
+    setShowTeams(false);
   }
 
   // function for hand left toggle
@@ -282,7 +282,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
     } catch (error) {
       console.error("Error fetching users:", error);
     }
-  };  
+  };
 
   // function for create teams
   const handleCreateTeam = async (newTeam) => {
@@ -328,7 +328,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
 
           <div className='left-buttons'>
             <a href="#" className="add-task-btn" id='task' onClick={() => setShowAddTask(true)} ><i className='fas fa-add'></i>Add Task</a>
-        {/* <a href='#' className="icon"><i className='fas fa-search'></i>Search</a> */}
+            {/* <a href='#' className="icon"><i className='fas fa-search'></i>Search</a> */}
             <a href='#' className="icon" onClick={toggleInbox}><i className='fas fa-inbox'></i>Inbox</a>
             <a href='#' className="icon" onClick={toggleToday}><i className='fas fa-calendar-day'></i>Today</a>
             <a href='#' className="icon" id='calander' onClick={toggleCalendar}><i className='fas fa-calendar'></i>Upcoming</a>
@@ -420,7 +420,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
                     .map((task, idx) => ({ task, idx }))
                     .filter(({ task }) => {
                       if (task.completed) return false;
-                      const dueDateStr = getTaskDate(task.dueDate); // yyyy-mm-dd
+                      const dueDateStr = getTaskDate(task.dueDate);
                       return dueDateStr === new Date().toISOString().slice(0, 10);
                     })
                     .map(({ task, idx }) => (
@@ -445,91 +445,98 @@ function Hero({ onUpdatesClick, onHelpClick }) {
                           </button>
                         </div>
                       </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             ) : showCompleted ? (
-                  <div className="completed-container">
-                    <div className="task-list">
-                      {tasks
-                        .filter(task => task.completed)
-                        .map((task, idx) => (
-                          <div className="task-card completed" key={idx}>
-                            <div className="task-header">
-                              <input
-                                type="checkbox"
-                                checked={true}
-                                disabled
-                                title="Completed"
-                              />
-                              <span className="task-title">{task.title}</span>
-                              <span className="task-date">{getTaskDate(task.dueDate)}</span>
-                            </div>
-                            <div className="task-desc">{task.description}</div>
-                            <div className="task-actions">
-                              <button className="icon-btn delete" title="Delete" onClick={() => handleDeleteTask(idx)}>
-                                <i className="fas fa-trash"></i>
-                              </button>
-                            </div>
-                          </div>
-                      ))}
-                    </div>
-                  </div>
-                ) : showTeams ? (
-                  <div className="teams-container">
-                    {teams.length === 0 ? (
-                      <p>No teams found. Create your first team!</p>
-                    ) : (
-                      <ul className="teams-list">
-                        {teams.map((team, idx) => (
-                          <li key={team.id || idx} className="team-card">
-                            <div className="team-card-header">
-                              <i className="fas fa-user-friends"></i>
-                              <span className="team-name">{team.name}</span>
-                              <button
-                                className="icon-btn delete"
-                                title="Delete Team"
-                                style={{ marginLeft: "auto" }}
-                                onClick={() => handleDeleteTeam(idx)}
-                              >
-                                <i className="fas fa-trash"></i>
-                              </button>
-                            </div>
-                            <div className="team-details">
-                              <div><b>Industry:</b> <span>{team.industry || <span className="team-na">N/A</span>}</span></div>
-                              <div><b>Work:</b> <span>{team.work || <span className="team-na">N/A</span>}</span></div>
-                              <div><b>Role:</b> <span>{team.role || <span className="team-na">N/A</span>}</span></div>
-                              <div>
-                                <b>Members:</b>{" "}
-                                <span>
-                                  {Array.isArray(team.members) && team.members.length > 0
-                                    ? team.members.join(", ")
-                                    : <span className="team-na">N/A</span>}
-                                </span>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    <button
-                      className="add-team-btn"
-                      onClick={() => setShowAddTeam(true)}
-                      style={{ marginTop: "18px" }}
-                    >
-                      <i className="fas fa-user-plus"></i> Add Team
-                    </button>
-                  </div>
-                ) : showMeeting ? (
-                  <ManageMeetings />
+              <div className="completed-container">
+                <div className="task-list">
+                  {tasks
+                    .filter(task => task.completed)
+                    .map((task, idx) => (
+                      <div className="task-card completed" key={idx}>
+                        <div className="task-header">
+                          <input
+                            type="checkbox"
+                            checked={true}
+                            disabled
+                            title="Completed"
+                          />
+                          <span className="task-title">{task.title}</span>
+                          <span className="task-date">{getTaskDate(task.dueDate)}</span>
+                        </div>
+                        <div className="task-desc">{task.description}</div>
+                        <div className="task-actions">
+                          <button className="icon-btn delete" title="Delete" onClick={() => handleDeleteTask(idx)}>
+                            <i className="fas fa-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            ) : showTeams ? (
+              <div className="teams-container">
+                {teams.length === 0 ? (
+                  <p>No teams found. Create your first team!</p>
                 ) : (
+                  <ul className="teams-list">
+                    {teams.map((team, idx) => (
+                      <li key={team.id || idx} className="team-card">
+                        <div className="team-card-header">
+                          <i className="fas fa-user-friends"></i>
+                          <span className="team-name">{team.name}</span>
+                          <button
+                            className="icon-btn delete"
+                            title="Delete Team"
+                            style={{ marginLeft: "auto" }}
+                            onClick={() => handleDeleteTeam(idx)}
+                          >
+                            <i className="fas fa-trash"></i>
+                          </button>
+                        </div>
+                        <div className="team-details">
+                          <div><b>Industry:</b> <span>{team.industry || <span className="team-na">N/A</span>}</span></div>
+                          <div><b>Work:</b> <span>{team.work || <span className="team-na">N/A</span>}</span></div>
+                          <div><b>Role:</b> <span>{team.role || <span className="team-na">N/A</span>}</span></div>
+                          <div>
+                            <b>Members:</b>{" "}
+                            <span>
+                              {Array.isArray(team.members) && team.members.length > 0
+                                ? team.members.join(", ")
+                                : <span className="team-na">N/A</span>}
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <button
+                  className="add-team-btn"
+                  onClick={() => setShowAddTeam(true)}
+                  style={{ marginTop: "18px" }}
+                >
+                  <i className="fas fa-user-plus"></i> Add Team
+                </button>
+              </div>
+            ) : showMeeting ? (
+              <div className="meeting-container">
+                  <iframe
+                    src="https://meet.jit.si/YourCustomRoomName" // Replace with your desired room name
+                    style={{ width: '100%', height: '600px', border: 'none' }}
+                    allow="camera; microphone; fullscreen; display-capture"
+                    title="Meeting Room"
+                  ></iframe>
+              </div>
+            ) : (
               <p>Manage your schedules efficiently and effectively.</p>
             )
           }
         </div>
       </div>
 
-        {showProfile && (
+      {showProfile && (
         <ProfilePopup
           user={user ? {
             name: user.displayName,
@@ -543,46 +550,46 @@ function Hero({ onUpdatesClick, onHelpClick }) {
         />
       )}
 
-        {showLogin && (
-          <LoginPopup
-            onClose={() => setShowLogin(false)}
-            onRegisterClick={() => { setShowLogin(false); setShowRegister(true); }}
-          />
-        )}
-        {showRegister && (
-          <RegisterPopup
-            onClose={() => setShowRegister(false)}
-            onLoginClick={() => { setShowRegister(false); setShowLogin(true); }}
-          />
-        )}
-        {showSuccess && (
-          <SuccessPopup
-            message={successMessage}
-            onClose={() => setShowSuccess(false)}
-          />
-        )}
-        {showAddTask && (
-          <AddTaskPopup
-            onClose={() => setShowAddTask(false)}
-            onAdd={handleAddTask}
-          />
-        )}
+      {showLogin && (
+        <LoginPopup
+          onClose={() => setShowLogin(false)}
+          onRegisterClick={() => { setShowLogin(false); setShowRegister(true); }}
+        />
+      )}
+      {showRegister && (
+        <RegisterPopup
+          onClose={() => setShowRegister(false)}
+          onLoginClick={() => { setShowRegister(false); setShowLogin(true); }}
+        />
+      )}
+      {showSuccess && (
+        <SuccessPopup
+          message={successMessage}
+          onClose={() => setShowSuccess(false)}
+        />
+      )}
+      {showAddTask && (
+        <AddTaskPopup
+          onClose={() => setShowAddTask(false)}
+          onAdd={handleAddTask}
+        />
+      )}
 
-        {editIdx !== null && editTask && (
-          <EditTaskPopup
-            onClose={() => { setEditIdx(null); setEditTask(null); }}
-            onUpdate={handleUpdateTask}
-            initialTask={editTask}
-          />
-        )}
+      {editIdx !== null && editTask && (
+        <EditTaskPopup
+          onClose={() => { setEditIdx(null); setEditTask(null); }}
+          onUpdate={handleUpdateTask}
+          initialTask={editTask}
+        />
+      )}
 
-        {showAddTeam && (
+      {showAddTeam && (
         <AddTeamPopup
           onClose={() => setShowAddTeam(false)}
           onAddTeam={handleCreateTeam}
-          users={allUsers} 
+          users={allUsers}
         />
-        )}
+      )}
     </section>
   );
 }

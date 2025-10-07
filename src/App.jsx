@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import './App.css'
 import Header from "./components/header";
 import About from "./components/about";
@@ -11,6 +12,8 @@ import LandingPage from "./components/LandingPage";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
+import ManageMeetings from "./components/MeetingRoom";
+import VideoCall from "./components/VideoCall";
 
 function App() {
   // About, Updates, Help&Support, login register, and privacy policy
@@ -114,7 +117,11 @@ function App() {
       {showUpdates && <Updates onClose={() => setShowUpdates(false)} />}
       {showHelp && <HelpSupport onClose={() => setShowHelp(false)} />} 
       {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />}
-      <Hero onUpdatesClick={handleUpdates} onHelpClick={handleHelp} /> 
+      <Routes>
+        <Route path="/" element={<Hero onUpdatesClick={handleUpdates} onHelpClick={handleHelp} />} />
+        <Route path="/meetings" element={<ManageMeetings />} />
+        <Route path="/meeting/:roomId" element={<VideoCall />} />
+      </Routes>
     </>
   );
 }
