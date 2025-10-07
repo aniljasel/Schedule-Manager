@@ -64,6 +64,20 @@ const VideoCall = () => {
               // Buffer for ICE candidates
               candidateBuffers.current[remoteId] = [];
 
+              // Listen for incoming offers from others
+              const incomingOfferDoc = doc(db, "calls", roomId, "offers", `${remoteId}_${currentUserId}`);
+              onSnapshot(incomingOfferDoc, async (snap) => {
+                const data = snap.data();
+                if (data?.offer && !pc.currentRemoteDescription) {
+                  await pc.setRemoteDescription(new RTCSessionDescription(data.offer));
+                  // Create and send answer
+                  const answer = await pc.createAnswer();
+                  await pc.setLocalDescription(answer);
+                  const answerDoc = doc(db, "calls", roomId, "answers", `${currentUserId}_${remoteId}`);
+                  await setDoc(answerDoc, { answer: { type: answer.type, sdp: answer.sdp } });
+                }
+              });
+
               // Listen for remote ICE
               onSnapshot(candidatesCol, (snapshot) => {
                 snapshot.docChanges().forEach((change) => {
