@@ -256,7 +256,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
     try {
       await deleteDoc(doc(db, "teams", teamToDelete.id));
       setTeams(prev => prev.filter((_, i) => i !== idx));
-      setSuccessMessage('Team deleted!');
+      setSuccessMessage(`Team "${teamToDelete.name}" deleted!`);
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 2000);
     } catch (error) {
@@ -341,7 +341,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
               setShowCompleted(false);
             }}>
               <i className='fas fa-user-group'></i>Teams</a>
-            <a href='#' className='icon' onClick={toggleMeeting}><i className='fas fa-users' ></i>Meeting Room</a>
+            {/* <a href='#' className='icon' onClick={toggleMeeting}><i className='fas fa-users' ></i>Meeting Room</a> */}
           </div>
 
           <div className='hero-footer'>
@@ -371,7 +371,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
               <div className="inbox-container">
                 <div className="task-list">
                   {tasks.map((task, idx) => (
-                    <div className={`task-card${task.completed ? ' completed' : ''}`} key={idx}>
+                    <div className={`task-Listcard${task.completed ? ' completed' : ''}`} key={idx}>
                       <div className="task-header">
                         <input
                           type="checkbox" className='checkbox'
@@ -424,7 +424,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
                       return dueDateStr === new Date().toISOString().slice(0, 10);
                     })
                     .map(({ task, idx }) => (
-                      <div className={`task-card${task.completed ? ' completed' : ''}`} key={idx}>
+                      <div className={`task-Listcard${task.completed ? ' completed' : ''}`} key={idx}>
                         <div className="task-header">
                           <input
                             type="checkbox" className='checkbox'
@@ -454,7 +454,7 @@ function Hero({ onUpdatesClick, onHelpClick }) {
                       {tasks
                         .filter(task => task.completed)
                         .map((task, idx) => (
-                          <div className="task-card completed" key={idx}>
+                          <div className="task-Listcard completed" key={idx}>
                             <div className="task-header">
                               <input
                                 type="checkbox"

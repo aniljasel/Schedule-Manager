@@ -4,7 +4,7 @@
   gap: 10px;
 }
 
-.task-card {
+.task-Listcard {
   background: var(--glass);
   border: 1.5px solid var(--glass-border);
   border-radius: 10px;
@@ -17,7 +17,7 @@
   animation: fadeInUp 0.3s ease-out;
 }
 
-.task-card.completed {
+.task-Listcard.completed {
   opacity: 0.7;
   text-decoration: line-through;
 }
@@ -67,8 +67,6 @@
 .icon-btn.delete {
   color: #e74c3c;
 }
-
-
 
 .icon-btn:hover {
   background: var(--accent);
