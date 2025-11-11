@@ -22,7 +22,10 @@
   gap: 10px;
 }
 
-.task-card input, textarea {
+.task-card input {
+  width: 93.2%;
+  height: 40px 0;
+  font-size: 1rem;
   margin: 8px 0;
   padding: 10px;
   border-radius: 6px;
@@ -30,15 +33,17 @@
   border: 1px solid var(--glass-border);
 }
 
-.task-card input {
-  height: 40px 0;
-  margin-top: 20px;
-  font-size: 1rem;
-
+.task-card textarea {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--dark);
+  border: 1px solid var(--glass-border);
 }
 
 .task-card input::placeholder,
-.task-card textarea::placeholder {
+.task-card textarea::placeholder,
+.task-card input[type="date"]::placeholder {
   color: var(--dark);
   font-family: 'Segoe UI', sans-serif;
 }
